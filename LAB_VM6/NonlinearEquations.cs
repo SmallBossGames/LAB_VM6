@@ -10,21 +10,21 @@ namespace LAB_VM6
     {
         public delegate double NolinearFunction(double x);
 
-        public static double ClarificationChords(double border1, double border2, double accuracy, NolinearFunction f)
+        public static double ClarificationChords(double border1, double border2, double accuracy, NolinearFunction f) // хорды
         {
             bool IsEqualSign(double val1, double val2) => (val1 * val2 > 0);
 
             double poolValue;
             double poolX;
 
-            if (IsEqualSign(f(border1),f(border2))) throw new Exception("Wrong borders");
+            if (IsEqualSign(f(border1), f(border2))) throw new Exception("Wrong borders");
 
             do
             {
                 poolX = border1 - f(border1) * (border2 - border1) / (f(border2) - f(border1));
                 poolValue = f(poolX);
 
-                if(IsEqualSign(poolValue, f(border1)))
+                if (IsEqualSign(poolValue, f(border1)))
                 {
                     border1 = poolX;
                     continue;
@@ -38,12 +38,12 @@ namespace LAB_VM6
 
                 throw new Exception("Sign error");
 
-            } while (poolValue>accuracy);
+            } while (poolValue > accuracy);
 
             return poolX;
         }
 
-        public static double ClarificationTangent(double originX, double accuracy, NolinearFunction f, out int itCount)
+        public static double ClarificationTangent(double originX, double accuracy, NolinearFunction f, out int itCount) // касательные
         {
             double
                 lastX,
@@ -65,7 +65,7 @@ namespace LAB_VM6
                 lastAccuracy = currentAccuracy;
                 itCount++;
 
-            } while (lastAccuracy>accuracy);
+            } while (lastAccuracy > accuracy);
 
             return newX;
         }
