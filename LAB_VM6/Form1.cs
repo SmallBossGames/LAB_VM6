@@ -20,9 +20,7 @@ namespace LAB_VM6
 
             var result = NonlinearEquations.ClarificationTangent(2.6, 0.001, QuestFunction, out var count);
 
-            var result2 = NonlinearEquations.ClarificationChords(0, 2.2, 0.001, QuestFunction);
-
-
+            var result2 = NonlinearEquations.ClarificationChords(0, 2.2, 0.001, QuestFunction, out var count2);
         }
     }
 }

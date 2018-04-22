@@ -10,19 +10,31 @@ namespace LAB_VM6
     {
         public delegate double NolinearFunction(double x);
 
-        public static double ClarificationChords(double border1, double border2, double accuracy, NolinearFunction f)
+
+        /// <summary>
+        /// Уточняет значение x методом хорд, в пределах указанных границ
+        /// </summary>
+        /// <param name="border1">Первая граница</param>
+        /// <param name="border2">Вторая граница</param>
+        /// <param name="accuracy">Точность</param>
+        /// <param name="f">Функция</param>
+        /// <param name="itCount">Количество итераций</param>
+        public static double ClarificationChords(double border1, double border2, double accuracy, NolinearFunction f, out int itCount)
         {
             bool IsEqualSign(double val1, double val2) => (val1 * val2 > 0);
 
+            if (IsEqualSign(f(border1), f(border2))) throw new Exception("Wrong borders");
+
             double poolValue;
             double poolX;
-
-            if (IsEqualSign(f(border1),f(border2))) throw new Exception("Wrong borders");
+            itCount = 0;
 
             do
             {
                 poolX = border1 - f(border1) * (border2 - border1) / (f(border2) - f(border1));
                 poolValue = f(poolX);
+
+                itCount++;
 
                 if(IsEqualSign(poolValue, f(border1)))
                 {
@@ -43,6 +55,13 @@ namespace LAB_VM6
             return poolX;
         }
 
+        /// <summary>
+        /// Уточняет значение x до указанной точности
+        /// </summary>
+        /// <param name="originX">Исходное значение x</param>
+        /// <param name="accuracy">Точность</param>
+        /// <param name="f">Функция</param>
+        /// <param name="itCount">Количество итераций</param>
         public static double ClarificationTangent(double originX, double accuracy, NolinearFunction f, out int itCount)
         {
             double
