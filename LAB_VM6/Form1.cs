@@ -17,16 +17,10 @@ namespace LAB_VM6
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void EnterButton_Click(object sender, EventArgs e)
-        {
-            var resultTangent = NonlinearEquations.ClarificationTangent(Convert.ToDouble(EnterTextBox.Text), Convert.ToDouble(AccuracyTextBox.Text), QuestFunction, out var count);
+            var result = NonlinearEquations.ClarificationTangent(2.6, 0.001, QuestFunction, out var count);
 
-            var resultChords = NonlinearEquations.ClarificationChords(Convert.ToDouble(BeginTextBox.Text), Convert.ToDouble(EndTextBox.Text), Convert.ToDouble(AccuracyTextBox.Text), QuestFunction);
-
-            ChordTextBox.Text = resultChords.ToString();
-            TangentTextBox.Text = resultTangent.ToString();
+            var result2 = NonlinearEquations.ClarificationChords(0, 2.2, 0.001, QuestFunction, out var count2);
         }
     }
 }
