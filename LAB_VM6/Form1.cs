@@ -16,7 +16,7 @@ namespace LAB_VM6
 
         public Form1()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void EnterButton_Click(object sender, EventArgs e)
