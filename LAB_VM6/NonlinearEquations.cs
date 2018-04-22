@@ -36,7 +36,7 @@ namespace LAB_VM6
 
                 itCount++;
 
-                if(IsEqualSign(poolValue, f(border1)))
+                if (IsEqualSign(poolValue, f(border1)))
                 {
                     border1 = poolX;
                     continue;
@@ -50,7 +50,7 @@ namespace LAB_VM6
 
                 throw new Exception("Sign error");
 
-            } while (poolValue>accuracy);
+            } while (poolValue > accuracy);
 
             return poolX;
         }
@@ -84,7 +84,7 @@ namespace LAB_VM6
                 lastAccuracy = currentAccuracy;
                 itCount++;
 
-            } while (lastAccuracy>accuracy);
+            } while (lastAccuracy > accuracy);
 
             return newX;
         }
